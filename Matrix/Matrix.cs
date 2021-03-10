@@ -15,5 +15,11 @@ namespace ZnptMatrix
       NumberOfColumns = matrixArray.GetUpperBound(1) + 1;
     }
 
+    public T this[int rowNumber, int columnNumber]
+    {
+      get => MatrixArray[rowNumber, columnNumber];
+      set => MatrixArray[rowNumber, columnNumber] = value;
+    }
+
   }
 }
