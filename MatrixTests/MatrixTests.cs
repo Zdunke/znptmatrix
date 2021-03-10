@@ -6,12 +6,14 @@ namespace ZnptMatrix
 {
   public class Tests
   {
-    private Matrix<int> _a;
-    private Matrix<double> _b;
+    private Matrix _a;
+    private Matrix _aDuplicate;
+    private Matrix _b;
     public Tests()
     {
-      _a = new Matrix<int>(new[,] { { 1, 2 }, { 4, 5 }, { 7, 8 } });
-      _b = new Matrix<double>(new[,] { { 1d, 2d, 3d }, { 4d, 5d, 6d } });
+      _a = new Matrix(new[,] { { 1d, 2d }, { 4d, 5d }, { 7d, 8d } });
+      _aDuplicate = new Matrix(new[,] { { 1d, 2d }, { 4d, 5d }, { 7d, 8d } });
+      _b = new Matrix(new[,] { { 1d, 2d, 3d }, { 4d, 5d, 6d } });
     }
     [Fact]
     public void TestNumbersOfRows()
@@ -26,21 +28,19 @@ namespace ZnptMatrix
       Assert.Equal(3, _b.NumberOfColumns);
     }
     [Fact]
-    public void TestGetIndexers()
+    public void TestEqualsEqualMatrices()
     {
-      Assert.Equal(1, _a[0, 0]);
-      Assert.Equal(5, _a[1, 1]);
-      Assert.Throws<IndexOutOfRangeException>(() => _a[9, 9]);
+      var result = _a.Equals(_aDuplicate);
+      Assert.Equal(true, result);
     }
+
     [Fact]
-    public void TestSetIndexers()
+    public void TestEqualsNOTEqualMatrices()
     {
-      _a[0, 1] = 101;
-      _a[1, 1] = 405;
-      Assert.Equal(101, _a[0, 1]);
-      Assert.Equal(405, _a[1, 1]);
-      Assert.Throws<IndexOutOfRangeException>(() => _a[9, 9] = 101);
+      var result = _a.Equals(_b);
+      Assert.Equal(false, result);
     }
+
 
   }
 }
