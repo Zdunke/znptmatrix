@@ -2,13 +2,13 @@
 
 namespace ZnptMatrix
 {
-  public class Matrix
+  public class Matrix<T>
   {
-    public double[,] MatrixArray { get; set; }
+    public T[,] MatrixArray { get; set; }
     public int NumberOfRows { get; set; }
     public int NumberOfColumns { get; set; }
 
-    public Matrix(double[,] matrixArray)
+    public Matrix(T[,] matrixArray)
     {
       MatrixArray = matrixArray;
       NumberOfRows = matrixArray.GetUpperBound(0) + 1;

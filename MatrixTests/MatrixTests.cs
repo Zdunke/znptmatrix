@@ -6,12 +6,12 @@ namespace ZnptMatrix
 {
   public class Tests
   {
-    private Matrix _a;
-    private Matrix _b;
+    private Matrix<int> _a;
+    private Matrix<double> _b;
     public Tests()
     {
-      _a = new Matrix(new[,] { { 1d, 2d }, { 4d, 5d }, { 7d, 8d } });
-      _b = new Matrix(new[,] { { 1d, 2d, 3d }, { 4d, 5d, 6d } });
+      _a = new Matrix<int>(new[,] { { 1, 2 }, { 4, 5 }, { 7, 8 } });
+      _b = new Matrix<double>(new[,] { { 1d, 2d, 3d }, { 4d, 5d, 6d } });
     }
     [Fact]
     public void NumbersOfRows()
