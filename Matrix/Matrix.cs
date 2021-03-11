@@ -47,11 +47,38 @@ namespace ZnptMatrix
         {
           if (m[i, j] != MatrixArray[i, j])
           {
+            Console.WriteLine("dupa");
             return false;
           }
         }
       }
       return true;
+    }
+    public Matrix Transpose()
+    {
+      double[,] transposeMatrix = new double[NumberOfColumns, NumberOfRows];
+
+      for (int i = 0; i < NumberOfColumns; i++)
+      {
+        for (int j = 0; j < NumberOfRows; j++)
+        {
+          transposeMatrix[i, j] = MatrixArray[j, i];
+        }
+      }
+
+      return new Matrix(transposeMatrix);
+    }
+
+    public void Print()
+    {
+      for (int i = 0; i < NumberOfRows; i++)
+      {
+        for (int j = 0; j < NumberOfColumns; j++)
+        {
+          Console.Write($"{MatrixArray[i, j]} ");
+        }
+        Console.WriteLine();
+      }
     }
   }
 }
