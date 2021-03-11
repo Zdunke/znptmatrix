@@ -63,6 +63,13 @@ namespace ZnptMatrix
       Assert.Equal(true, _a != _b);
     }
 
+    [Fact]
+    public void TestTheSameSize()
+    {
+      Assert.Equal(true, _a.TheSameSize(_aDuplicate));
+      Assert.Equal(false, _a.TheSameSize(_b));
+    }
+
   }
 }
 
