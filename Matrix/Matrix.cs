@@ -2,7 +2,7 @@
 
 namespace ZnptMatrix
 {
-  public class Matrix
+  public class Matrix : IEquatable<Matrix>
   {
     public double[,] MatrixArray { get; set; }
     public int NumberOfRows { get; set; }
@@ -21,6 +21,11 @@ namespace ZnptMatrix
       set => MatrixArray[rowNumber, columnNumber] = value;
     }
 
+    public override int GetHashCode()
+    {
+      return GetHashCode();
+    }
+
     public override bool Equals(object obj)
     {
       if ((obj == null) || !this.GetType().Equals(obj.GetType()))
@@ -32,7 +37,7 @@ namespace ZnptMatrix
 
     public bool Equals(Matrix m)
     {
-      if (m.NumberOfColumns != this.NumberOfColumns || m.NumberOfRows != this.NumberOfRows)
+      if (m.NumberOfColumns != NumberOfColumns || m.NumberOfRows != NumberOfRows)
       {
         return false;
       }
@@ -40,7 +45,7 @@ namespace ZnptMatrix
       {
         for (int j = 0; j < NumberOfColumns; j++)
         {
-          if (MatrixArray[i, j] != this.MatrixArray[i, j])
+          if (m[i, j] != MatrixArray[i, j])
           {
             return false;
           }
