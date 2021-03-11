@@ -69,7 +69,18 @@ namespace ZnptMatrix
       Assert.Equal(true, _a.TheSameSize(_aDuplicate));
       Assert.Equal(false, _a.TheSameSize(_b));
     }
-
+    [Fact]
+    public void TestAddingTwoMatricesEqualSize()
+    {
+      var result = _a.Add(_a);
+      var resultMatrix = new Matrix(new double[,] { { 2d, 4d }, { 8d, 10d }, { 14d, 16d } });
+      Assert.Equal(true, result == resultMatrix);
+    }
+    [Fact]
+    public void TestAddingTwoMatricesWrongSize()
+    {
+      Assert.Throws<ArgumentException>(() => _a.Add(_b));
+    }
   }
 }
 

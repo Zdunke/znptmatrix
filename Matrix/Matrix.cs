@@ -70,6 +70,24 @@ namespace ZnptMatrix
     public static bool operator ==(Matrix m1, Matrix m2) => m1.Equals(m2);
     public static bool operator !=(Matrix m1, Matrix m2) => !m1.Equals(m2);
 
+    public Matrix Add(Matrix m)
+    {
+      if (!this.TheSameSize(m))
+      {
+        throw new ArgumentException("Matricies are not the same size!");
+      }
+
+      double[,] matrixArray = new double[NumberOfRows, NumberOfColumns];
+
+      for (int i = 0; i < NumberOfRows; i++)
+      {
+        for (int j = 0; j < NumberOfColumns; j++)
+        {
+          matrixArray[i, j] = m[i, j] + MatrixArray[i, j];
+        }
+      }
+      return new Matrix(matrixArray);
+    }
     public void Print()
     {
       for (int i = 0; i < NumberOfRows; i++)
