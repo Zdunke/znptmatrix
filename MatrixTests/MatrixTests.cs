@@ -49,7 +49,19 @@ namespace ZnptMatrix
       var result = _aTranspose.Equals(transposeA);
       Assert.Equal(true, result);
     }
+    [Fact]
+    public void TestEqualsOperator()
+    {
+      Assert.Equal(false, _b == _a);
+      Assert.Equal(true, _a == _aDuplicate);
+    }
 
+    [Fact]
+    public void TestNOTEqualsOperator()
+    {
+      Assert.Equal(false, _a != _aDuplicate);
+      Assert.Equal(true, _a != _b);
+    }
 
   }
 }

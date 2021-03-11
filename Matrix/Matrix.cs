@@ -69,6 +69,8 @@ namespace ZnptMatrix
       return new Matrix(transposeMatrix);
     }
 
+    public static bool operator ==(Matrix m1, Matrix m2) => m1.Equals(m2);
+    public static bool operator !=(Matrix m1, Matrix m2) => !m1.Equals(m2);
     public void Print()
     {
       for (int i = 0; i < NumberOfRows; i++)
