@@ -69,7 +69,8 @@ namespace ZnptMatrix
     }
     public static bool operator ==(Matrix m1, Matrix m2) => m1.Equals(m2);
     public static bool operator !=(Matrix m1, Matrix m2) => !m1.Equals(m2);
-
+    public static Matrix operator +(Matrix m) => m;
+    public static Matrix operator +(Matrix m1, Matrix m2) => m1.Add(m2);
     public Matrix Add(Matrix m)
     {
       if (!this.TheSameSize(m))
