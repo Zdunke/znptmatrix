@@ -71,6 +71,7 @@ namespace ZnptMatrix
     public static bool operator !=(Matrix m1, Matrix m2) => !m1.Equals(m2);
     public static Matrix operator +(Matrix m) => m;
     public static Matrix operator +(Matrix m1, Matrix m2) => m1.Add(m2);
+    public static Matrix operator -(Matrix m1, Matrix m2) => m1.Subtract(m2);
     public Matrix Add(Matrix m)
     {
       if (!this.TheSameSize(m))
@@ -85,6 +86,24 @@ namespace ZnptMatrix
         for (int j = 0; j < NumberOfColumns; j++)
         {
           matrixArray[i, j] = m[i, j] + MatrixArray[i, j];
+        }
+      }
+      return new Matrix(matrixArray);
+    }
+    public Matrix Subtract(Matrix m)
+    {
+      if (!this.TheSameSize(m))
+      {
+        throw new ArgumentException("Matricies are not the same size!");
+      }
+
+      double[,] matrixArray = new double[NumberOfRows, NumberOfColumns];
+
+      for (int i = 0; i < NumberOfRows; i++)
+      {
+        for (int j = 0; j < NumberOfColumns; j++)
+        {
+          matrixArray[i, j] = m[i, j] - MatrixArray[i, j];
         }
       }
       return new Matrix(matrixArray);

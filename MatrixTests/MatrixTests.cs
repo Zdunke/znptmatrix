@@ -81,6 +81,18 @@ namespace ZnptMatrix
     {
       Assert.Throws<ArgumentException>(() => _a.Add(_b));
     }
+    [Fact]
+    public void TestSubtractingTwoMatricesEqualSize()
+    {
+      var result = _a.Subtract(_a);
+      var resultMatrix = new Matrix(new double[,] { { 0d, 0d }, { 0d, 0d }, { 0d, 0d } });
+      Assert.Equal(true, result == resultMatrix);
+    }
+    [Fact]
+    public void TestSubtractingTwoMatricesWrongSize()
+    {
+      Assert.Throws<ArgumentException>(() => _a.Subtract(_b));
+    }
   }
 }
 
