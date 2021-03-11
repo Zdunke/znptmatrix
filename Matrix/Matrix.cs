@@ -72,6 +72,7 @@ namespace ZnptMatrix
     public static Matrix operator +(Matrix m) => m;
     public static Matrix operator +(Matrix m1, Matrix m2) => m1.Add(m2);
     public static Matrix operator -(Matrix m1, Matrix m2) => m1.Subtract(m2);
+    public static Matrix operator *(Matrix m, double scalar) => m.MultiplyByScalar(scalar);
     public Matrix Add(Matrix m)
     {
       if (!this.TheSameSize(m))
@@ -118,6 +119,18 @@ namespace ZnptMatrix
         }
         Console.WriteLine();
       }
+    }
+    public Matrix MultiplyByScalar(double scalar)
+    {
+      var arrayMatrix = new double[NumberOfRows, NumberOfColumns];
+      for (int i = 0; i < NumberOfRows; i++)
+      {
+        for (int j = 0; j < NumberOfColumns; j++)
+        {
+          arrayMatrix[i, j] = scalar * MatrixArray[i, j];
+        }
+      }
+      return new Matrix(arrayMatrix);
     }
   }
 }

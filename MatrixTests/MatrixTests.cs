@@ -93,6 +93,16 @@ namespace ZnptMatrix
     {
       Assert.Throws<ArgumentException>(() => _a.Subtract(_b));
     }
+
+    [Fact]
+    public void TestMultiplyByScalar()
+    {
+      var result1 = _a.MultiplyByScalar(0);
+      var result2 = _a * 0;
+      var resultMatrix = new Matrix(new double[,] { { 0d, 0d }, { 0d, 0d }, { 0d, 0d } });
+      Assert.Equal(true, result1 == resultMatrix);
+      Assert.Equal(true, result2 == resultMatrix);
+    }
   }
 }
 
