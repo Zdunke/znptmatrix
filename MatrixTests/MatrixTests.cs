@@ -18,6 +18,11 @@ namespace ZnptMatrix
       _b = new Matrix(new[,] { { 1d, 2d, 3d }, { 4d, 5d, 6d } });
     }
     [Fact]
+    public void NotSquareMatrixLuDecomposition()
+    {
+      Assert.Throws<Exception>(() => _a.LUDecompositionWithoutPivot(out Matrix L, out Matrix U));
+    }
+    [Fact]
     public void TestNumbersOfRows()
     {
       Assert.Equal(3, _a.NumberOfRows);
