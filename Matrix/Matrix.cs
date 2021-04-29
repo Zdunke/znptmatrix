@@ -73,7 +73,6 @@ namespace ZnptMatrix
 
       return new Matrix(transposeMatrix);
     }
-
     internal Matrix(int size)
     {
       this.NumberOfColumns = size;
@@ -231,12 +230,10 @@ namespace ZnptMatrix
           b[firstR2 + i] = tmp;
       }
     }
-
     public bool InverseMatrix()
     {
       const double Eps = 1e-12;
             if (NumberOfRows != NumberOfColumns) throw new Exception("rows != cols for Inv");
-            Console.WriteLine("DUPA");
             Matrix M = new Matrix(NumberOfRows); //unitary
             for (int diag = 0; diag < NumberOfRows; diag++)
             {
@@ -303,13 +300,21 @@ namespace ZnptMatrix
    
       U.InverseMatrix();
       L.InverseMatrix();
-      //       U.Print();
-      // L.Print();
       var temp = L*b;
       temp.Print();
       return U*temp;
     }
+    public double Norm(int normDegree)
+    {
+      var normValue = 0.0;
+      for(int i = 0; i < NumberOfRows; i++)
+      {
+        for(int j = 0; j < NumberOfColumns; j++)
+        {
+            normValue +=Math.Pow(Math.Abs(MatrixArray[i,j]),normDegree);
+        }
+      }
+      return Math.Pow(normValue, 1.0/normDegree);
+    }
   }
-
-
 }
